@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { getFamousMatches, getFieldRecommendations } from '../profileHelperApi'
 import type { FamousMatchResult, FieldRecommendation } from '../types'
 import { ScientistCard } from './ScientistCard'
@@ -28,7 +28,7 @@ export function ScientistMatchSection({ sessionId }: ScientistMatchSectionProps)
 
   return (
     <section className="pv-section sci-section">
-      <h3 className="pv-section-title">你的科研灵魂伴侣</h3>
+      <h3 className="pv-section-title">浣犵殑绉戠爺鐏甸瓊浼翠荆</h3>
 
       {famousLoading ? (
         <div className="sci-loading">
@@ -37,7 +37,7 @@ export function ScientistMatchSection({ sessionId }: ScientistMatchSectionProps)
             <div className="sci-loading-dot" />
             <div className="sci-loading-dot" />
           </div>
-          <p>正在从 30 位知名科学家中寻找你的灵魂伴侣...</p>
+          <p>姝ｅ湪浠?30 浣嶇煡鍚嶇瀛﹀涓鎵句綘鐨勭伒榄備即渚?..</p>
         </div>
       ) : famous ? (
         <>
@@ -47,7 +47,7 @@ export function ScientistMatchSection({ sessionId }: ScientistMatchSectionProps)
             ))}
           </div>
 
-          <h4 className="sci-sub-title">你在科学家图谱中的位置</h4>
+          <h4 className="sci-sub-title">浣犲湪绉戝瀹跺浘璋变腑鐨勪綅缃?/h4>
           <ScientistScatter
             scatterData={famous.scatter_data}
             userPoint={famous.user_point}
@@ -56,15 +56,15 @@ export function ScientistMatchSection({ sessionId }: ScientistMatchSectionProps)
         </>
       ) : null}
 
-      <h4 className="sci-sub-title">值得关注的同领域学者</h4>
+      <h4 className="sci-sub-title">鍊煎緱鍏虫敞鐨勫悓棰嗗煙瀛﹁€?/h4>
       {fieldLoading ? (
         <div className="sci-field-loading">
           <span className="sci-field-spinner" />
-          <span>正在根据你的研究方向寻找相关学者...</span>
+          <span>姝ｅ湪鏍规嵁浣犵殑鐮旂┒鏂瑰悜瀵绘壘鐩稿叧瀛﹁€?..</span>
         </div>
       ) : fieldRecs && fieldRecs.length > 0 ? (
         <>
-          <p className="sci-field-hint">基于你的研究方向推荐，可以关注他们的最新工作</p>
+          <p className="sci-field-hint">鍩轰簬浣犵殑鐮旂┒鏂瑰悜鎺ㄨ崘锛屽彲浠ュ叧娉ㄤ粬浠殑鏈€鏂板伐浣?/p>
           <div className="sci-field-list">
             {fieldRecs.map((r, i) => (
               <div key={i} className="sci-field-item">
@@ -72,14 +72,14 @@ export function ScientistMatchSection({ sessionId }: ScientistMatchSectionProps)
                   <strong>{r.name}</strong>
                   {r.name_en && <span className="sci-field-name-en">{r.name_en}</span>}
                 </div>
-                <p className="sci-field-info">{r.institution} · {r.field}</p>
+                <p className="sci-field-info">{r.institution} 路 {r.field}</p>
                 <p className="sci-field-reason">{r.reason}</p>
               </div>
             ))}
           </div>
         </>
       ) : (
-        <p className="pv-empty">暂无领域推荐（需要完善研究领域信息）</p>
+        <p className="pv-empty">鏆傛棤棰嗗煙鎺ㄨ崘锛堥渶瑕佸畬鍠勭爺绌堕鍩熶俊鎭級</p>
       )}
     </section>
   )

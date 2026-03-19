@@ -1,10 +1,10 @@
-/** Block 协议类型定义，与 digital-twin-bootstrap 保持一致 */
+﻿/** Block 鍗忚绫诲瀷瀹氫箟锛屼笌 digital-twin-bootstrap 淇濇寔涓€鑷?*/
 
 export interface ChoiceOption {
   id: string
   label: string
   description?: string
-  /** 若设置，点击该选项后在右侧展示内联文本输入框，用户填写后再发送。值为 placeholder 文字 */
+  /** 鑻ヨ缃紝鐐瑰嚮璇ラ€夐」鍚庡湪鍙充晶灞曠ず鍐呰仈鏂囨湰杈撳叆妗嗭紝鐢ㄦ埛濉啓鍚庡啀鍙戦€併€傚€间负 placeholder 鏂囧瓧 */
   text_prompt?: string
 }
 
@@ -26,17 +26,17 @@ export type Block =
 
 export interface ChatMessage {
   role: 'user' | 'assistant'
-  /** 旧式纯文本消息（backward compat） */
+  /** 鏃у紡绾枃鏈秷鎭紙backward compat锛?*/
   content?: string
-  /** Block 协议消息 */
+  /** Block 鍗忚娑堟伅 */
   blocks?: Block[]
-  /** Block 级已响应集合（存储已回答的 block id），替代消息级 _responded */
+  /** Block 绾у凡鍝嶅簲闆嗗悎锛堝瓨鍌ㄥ凡鍥炵瓟鐨?block id锛夛紝鏇夸唬娑堟伅绾?_responded */
   _responded_blocks?: string[]
-  /** @deprecated 消息级已响应标记，仅向后兼容用，新逻辑以 _responded_blocks 为准 */
+  /** @deprecated 娑堟伅绾у凡鍝嶅簲鏍囪锛屼粎鍚戝悗鍏煎鐢紝鏂伴€昏緫浠?_responded_blocks 涓哄噯 */
   _responded?: boolean
 }
 
-// ── 科学家匹配类型 ────────────────────────────────────────────────
+// 鈹€鈹€ 绉戝瀹跺尮閰嶇被鍨?鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
 
 export interface FamousMatch {
   name: string
@@ -72,7 +72,7 @@ export interface FamousMatchResult {
   user_point: { csi: number; rai: number }
 }
 
-// ── StructuredProfile（画像结构化数据，用于维度可视化）────────────
+// 鈹€鈹€ StructuredProfile锛堢敾鍍忕粨鏋勫寲鏁版嵁锛岀敤浜庣淮搴﹀彲瑙嗗寲锛夆攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
 
 export interface ProcessScore {
   score: number | null

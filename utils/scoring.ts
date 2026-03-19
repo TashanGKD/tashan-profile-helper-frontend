@@ -1,8 +1,7 @@
-import type { ScaleDefinition } from '../data/scales'
+﻿import type { ScaleDefinition } from '../data/scales'
 
 /**
- * 计算量表各维度得分。
- * 处理反向计分：reverse 题 score = (max_val + 1) - raw
+ * 璁＄畻閲忚〃鍚勭淮搴﹀緱鍒嗐€? * 澶勭悊鍙嶅悜璁″垎锛歳everse 棰?score = (max_val + 1) - raw
  */
 export function calculateScores(
   scale: ScaleDefinition,
@@ -38,27 +37,25 @@ export function calculateScores(
 }
 
 /**
- * RCSS 专用：计算 CSI = I - D（求和后相减）
- * 范围 -24 ~ +24
+ * RCSS 涓撶敤锛氳绠?CSI = I - D锛堟眰鍜屽悗鐩稿噺锛? * 鑼冨洿 -24 ~ +24
  */
 export function calculateRCSS(scores: Record<string, number>) {
   const I = scores['integration'] || 0
   const D = scores['depth'] || 0
   const CSI = I - D
 
-  let type = '平衡型'
-  if (CSI >= 17)       type = '强整合型'
-  else if (CSI >= 8)   type = '倾向整合型'
-  else if (CSI <= -17) type = '强深度型'
-  else if (CSI <= -8)  type = '倾向深度型'
+  let type = '骞宠　鍨?
+  if (CSI >= 17)       type = '寮烘暣鍚堝瀷'
+  else if (CSI >= 8)   type = '鍊惧悜鏁村悎鍨?
+  else if (CSI <= -17) type = '寮烘繁搴﹀瀷'
+  else if (CSI <= -8)  type = '鍊惧悜娣卞害鍨?
 
   return { I, D, CSI, type }
 }
 
 /**
- * AMS-GSR 28 专用：计算 RAI（相对自主性指数）
- * RAI = 3×求知 + 3×成就 + 3×体验刺激 + 2×认同 − 1×内摄 − 2×外部 − 3×无动机
- */
+ * AMS-GSR 28 涓撶敤锛氳绠?RAI锛堢浉瀵硅嚜涓绘€ф寚鏁帮級
+ * RAI = 3脳姹傜煡 + 3脳鎴愬氨 + 3脳浣撻獙鍒烘縺 + 2脳璁ゅ悓 鈭?1脳鍐呮憚 鈭?2脳澶栭儴 鈭?3脳鏃犲姩鏈? */
 export function calculateAMS_RAI(scores: Record<string, number>) {
   const know          = scores['know']           || 0
   const accomplishment= scores['accomplishment'] || 0
@@ -79,5 +76,5 @@ export function calculateAMS_RAI(scores: Record<string, number>) {
   }
 }
 
-/** 向后兼容旧名称 */
+/** 鍚戝悗鍏煎鏃у悕绉?*/
 export const calculateAMSRAI = calculateAMS_RAI

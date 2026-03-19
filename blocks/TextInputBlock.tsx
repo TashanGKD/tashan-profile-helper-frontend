@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 
 interface TextInputBlockProps {
   question: string
@@ -35,7 +35,7 @@ export function TextInputBlock({ question, placeholder, multiline, onSubmit, dis
           className="text-input-area"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder={placeholder || '请输入...'}
+          placeholder={placeholder || '璇疯緭鍏?..'}
           rows={3}
           disabled={disabled}
         />
@@ -45,7 +45,7 @@ export function TextInputBlock({ question, placeholder, multiline, onSubmit, dis
           className="text-input-field"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder={placeholder || '请输入...'}
+          placeholder={placeholder || '璇疯緭鍏?..'}
           disabled={disabled}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -61,7 +61,7 @@ export function TextInputBlock({ question, placeholder, multiline, onSubmit, dis
         onClick={handleSubmit}
         disabled={disabled || !value.trim()}
       >
-        确认
+        纭
       </button>
     </div>
   )

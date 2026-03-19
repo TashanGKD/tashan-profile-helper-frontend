@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+﻿import { useNavigate } from 'react-router-dom'
 import type { ActionButton } from '../types'
 
 interface ActionsBlockProps {

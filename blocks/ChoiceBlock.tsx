@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+﻿import { useRef, useState } from 'react'
 import type { ChoiceOption } from '../types'
 
 interface ChoiceBlockProps {
@@ -10,8 +10,7 @@ interface ChoiceBlockProps {
 
 export function ChoiceBlock({ question, options, onSelect, disabled }: ChoiceBlockProps) {
   const [selected, setSelected] = useState<string | null>(null)
-  // 当某选项有 text_prompt 且被点击时，展示内联输入框
-  const [inlineOption, setInlineOption] = useState<ChoiceOption | null>(null)
+  // 褰撴煇閫夐」鏈?text_prompt 涓旇鐐瑰嚮鏃讹紝灞曠ず鍐呰仈杈撳叆妗?  const [inlineOption, setInlineOption] = useState<ChoiceOption | null>(null)
   const [inlineText, setInlineText] = useState('')
   const inlineRef = useRef<HTMLInputElement>(null)
 
@@ -19,22 +18,19 @@ export function ChoiceBlock({ question, options, onSelect, disabled }: ChoiceBlo
     if (disabled || selected) return
 
     if (opt.text_prompt) {
-      // 有 text_prompt → 展示内联输入框，不立即发送
-      setInlineOption(opt)
+      // 鏈?text_prompt 鈫?灞曠ず鍐呰仈杈撳叆妗嗭紝涓嶇珛鍗冲彂閫?      setInlineOption(opt)
       setTimeout(() => inlineRef.current?.focus(), 50)
       return
     }
 
-    // 普通选项 → 立即发送
-    setSelected(opt.id)
+    // 鏅€氶€夐」 鈫?绔嬪嵆鍙戦€?    setSelected(opt.id)
     onSelect?.(opt)
   }
 
   const handleInlineSubmit = () => {
     if (!inlineOption || !inlineText.trim()) return
     setSelected(inlineOption.id)
-    // 把选项标签 + 用户填写内容合并成消息
-    onSelect?.(inlineOption, inlineText.trim())
+    // 鎶婇€夐」鏍囩 + 鐢ㄦ埛濉啓鍐呭鍚堝苟鎴愭秷鎭?    onSelect?.(inlineOption, inlineText.trim())
   }
 
   const isLocked = !!(disabled || selected)
@@ -59,7 +55,7 @@ export function ChoiceBlock({ question, options, onSelect, disabled }: ChoiceBlo
                 {opt.description && <span className="choice-desc">{opt.description}</span>}
               </button>
 
-              {/* 内联输入框：仅在该选项有 text_prompt 且被激活时显示 */}
+              {/* 鍐呰仈杈撳叆妗嗭細浠呭湪璇ラ€夐」鏈?text_prompt 涓旇婵€娲绘椂鏄剧ず */}
               {isInlineActive && (
                 <div className="choice-inline-input">
                   <input
@@ -82,7 +78,7 @@ export function ChoiceBlock({ question, options, onSelect, disabled }: ChoiceBlo
                     onClick={handleInlineSubmit}
                     disabled={!inlineText.trim()}
                   >
-                    确认
+                    纭
                   </button>
                 </div>
               )}

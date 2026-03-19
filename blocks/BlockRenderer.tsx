@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+﻿import { useRef, useState } from 'react'
 import type { Block } from '../types'
 import ReactMarkdown from 'react-markdown'
 import { ChoiceBlock } from './ChoiceBlock'
@@ -21,7 +21,7 @@ function CodeBlockWithCopy({ children, ...props }: React.ComponentPropsWithoutRe
   }
   return (
     <div className="code-block-wrapper">
-      <button type="button" className="code-copy-btn" onClick={handleCopy}>{copied ? '已复制' : '复制'}</button>
+      <button type="button" className="code-copy-btn" onClick={handleCopy}>{copied ? '宸插鍒? : '澶嶅埗'}</button>
       <pre ref={preRef} {...props}>{children}</pre>
     </div>
   )
@@ -48,7 +48,7 @@ export function BlockRenderer({ block, onRespond, disabled, responded }: BlockRe
           question={block.question}
           options={block.options}
           onSelect={(opt, extraText) =>
-            // 有内联文本时：发送 "选项标签: 用户输入内容"
+            // 鏈夊唴鑱旀枃鏈椂锛氬彂閫?"閫夐」鏍囩: 鐢ㄦ埛杈撳叆鍐呭"
             onRespond?.(extraText ? `${opt.label}: ${extraText}` : opt.label)
           }
           disabled={disabled || responded}

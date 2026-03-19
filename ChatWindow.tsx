@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+﻿import { useState, useRef, useEffect, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MessageBubble } from './MessageBubble'
 import { LoadingDots, RobotAvatar } from './LoadingDots'
@@ -30,16 +30,15 @@ function setStoredSessionId(id: string) {
   }
 }
 
-/** 判断消息是否含有交互型 Block（choice/text_input/rating） */
+/** 鍒ゆ柇娑堟伅鏄惁鍚湁浜や簰鍨?Block锛坈hoice/text_input/rating锛?*/
 function hasInteractiveBlock(blocks: Block[]): boolean {
   return blocks.some((b) => b.type === 'choice' || b.type === 'text_input' || b.type === 'rating')
 }
 
 /**
- * 输入框锁定状态：
- * - 'initial'：空会话，显示固定文本"建立我的分身"，只读，只能发送
- * - 'locked'：最后一条助手消息含 choice/rating，输入框变浅禁用
- * - 'active'：正常可输入（纯文本回复、text_input 块、copyable 等）
+ * 杈撳叆妗嗛攣瀹氱姸鎬侊細
+ * - 'initial'锛氱┖浼氳瘽锛屾樉绀哄浐瀹氭枃鏈?寤虹珛鎴戠殑鍒嗚韩"锛屽彧璇伙紝鍙兘鍙戦€? * - 'locked'锛氭渶鍚庝竴鏉″姪鎵嬫秷鎭惈 choice/rating锛岃緭鍏ユ鍙樻祬绂佺敤
+ * - 'active'锛氭甯稿彲杈撳叆锛堢函鏂囨湰鍥炲銆乼ext_input 鍧椼€乧opyable 绛夛級
  */
 type InputLockState = 'initial' | 'locked' | 'active'
 
@@ -53,16 +52,15 @@ function getInputLockState(messages: ChatMessage[]): InputLockState {
       if (blocks.length === 0) return 'active'
       const hasChoice = blocks.some((b) => b.type === 'choice')
       const hasRating = blocks.some((b) => b.type === 'rating')
-      // choice/rating 存在 → 锁定（即使同时有 text_input 也锁定）
+      // choice/rating 瀛樺湪 鈫?閿佸畾锛堝嵆浣垮悓鏃舵湁 text_input 涔熼攣瀹氾級
       if (hasChoice || hasRating) return 'locked'
-      // 只有 text_input / text / copyable / actions → 可输入
-      return 'active'
+      // 鍙湁 text_input / text / copyable / actions 鈫?鍙緭鍏?      return 'active'
     }
   }
   return 'active'
 }
 
-const INIT_MESSAGE = '建立我的分身'
+const INIT_MESSAGE = '寤虹珛鎴戠殑鍒嗚韩'
 
 export function ChatWindow() {
   const [sessionId, setSessionId] = useState<string | null>(null)
@@ -80,15 +78,13 @@ export function ChatWindow() {
   const navigate = useNavigate()
 
   /**
-   * requireCurrentUser：
-   * - 有登录用户 → 始终通过
-   * - 无登录用户但 sessionId 存在 → 匿名模式通过（AUTH_MODE=none 场景）
-   * - 无登录 + 无 session → 提示登录
+   * requireCurrentUser锛?   * - 鏈夌櫥褰曠敤鎴?鈫?濮嬬粓閫氳繃
+   * - 鏃犵櫥褰曠敤鎴蜂絾 sessionId 瀛樺湪 鈫?鍖垮悕妯″紡閫氳繃锛圓UTH_MODE=none 鍦烘櫙锛?   * - 鏃犵櫥褰?+ 鏃?session 鈫?鎻愮ず鐧诲綍
    */
   const requireCurrentUser = useCallback(() => {
     if (currentUser) return true
-    if (sessionId) return true      // 匿名 session 已建立，允许交互
-    toast.error('请先登录后再与数字分身助手对话')
+    if (sessionId) return true      // 鍖垮悕 session 宸插缓绔嬶紝鍏佽浜や簰
+    toast.error('璇峰厛鐧诲綍鍚庡啀涓庢暟瀛楀垎韬姪鎵嬪璇?)
     return false
   }, [currentUser, sessionId])
 
@@ -104,20 +100,20 @@ export function ChatWindow() {
 
   useEffect(() => {
     async function init() {
-      // ── 1. 尝试认证（可选，失败降级为匿名）──────────────────────
+      // 鈹€鈹€ 1. 灏濊瘯璁よ瘉锛堝彲閫夛紝澶辫触闄嶇骇涓哄尶鍚嶏級鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
       let user: import('../../api/auth').User | null = null
       const token = tokenManager.get()
       if (token) {
         try {
           user = await refreshCurrentUserProfile()
         } catch {
-          // auth 服务不可用（如 topiclab-backend 未启动），降级为匿名模式
+          // auth 鏈嶅姟涓嶅彲鐢紙濡?topiclab-backend 鏈惎鍔級锛岄檷绾т负鍖垮悕妯″紡
         }
       }
       setCurrentUser(user)
 
-      // ── 2. 始终创建 session（无论是否已登录）──────────────────────
-      // AUTH_MODE=none 时后端接受匿名请求，前端无需登录即可使用 profile helper
+      // 鈹€鈹€ 2. 濮嬬粓鍒涘缓 session锛堟棤璁烘槸鍚﹀凡鐧诲綍锛夆攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+      // AUTH_MODE=none 鏃跺悗绔帴鍙楀尶鍚嶈姹傦紝鍓嶇鏃犻渶鐧诲綍鍗冲彲浣跨敤 profile helper
       try {
         const stored = getStoredSessionId()
         const id = await getOrCreateSession(stored ?? undefined)
@@ -125,15 +121,14 @@ export function ChatWindow() {
         setStoredSessionId(id)
         await fetchProfile(id)
       } catch {
-        // 后端不可达，session 创建失败（保持 sessionId = null）
-      } finally {
+        // 鍚庣涓嶅彲杈撅紝session 鍒涘缓澶辫触锛堜繚鎸?sessionId = null锛?      } finally {
         setInitialized(true)
       }
     }
     init()
   }, [fetchProfile])
 
-  /** 从 localStorage 恢复历史消息，有历史则清空初始输入文字 */
+  /** 浠?localStorage 鎭㈠鍘嗗彶娑堟伅锛屾湁鍘嗗彶鍒欐竻绌哄垵濮嬭緭鍏ユ枃瀛?*/
   useEffect(() => {
     if (!sessionId) return
     try {
@@ -142,7 +137,7 @@ export function ChatWindow() {
         const parsed = JSON.parse(raw)
         if (Array.isArray(parsed) && parsed.length > 0) {
           setMessages(parsed)
-          setInput('')   // 有历史消息时清空初始固定文字
+          setInput('')   // 鏈夊巻鍙叉秷鎭椂娓呯┖鍒濆鍥哄畾鏂囧瓧
         }
       }
     } catch {
@@ -150,7 +145,7 @@ export function ChatWindow() {
     }
   }, [sessionId])
 
-  /** 同步消息到 localStorage */
+  /** 鍚屾娑堟伅鍒?localStorage */
   useEffect(() => {
     if (!sessionId) return
     try {
@@ -161,24 +156,20 @@ export function ChatWindow() {
   }, [sessionId, messages])
 
   /**
-   * 滚动策略：
-   * - 有用户消息 → 让最后一条用户消息贴近容器顶部（AI 回复在下方可见）
-   * - 无用户消息 → 滚到底部
+   * 婊氬姩绛栫暐锛?   * - 鏈夌敤鎴锋秷鎭?鈫?璁╂渶鍚庝竴鏉＄敤鎴锋秷鎭创杩戝鍣ㄩ《閮紙AI 鍥炲鍦ㄤ笅鏂瑰彲瑙侊級
+   * - 鏃犵敤鎴锋秷鎭?鈫?婊氬埌搴曢儴
    *
-   * MessageBubble 已有 data-role="user"，直接查询，无需额外包裹 div。
-   * 用 requestAnimationFrame 确保 DOM 完成渲染后再计算位置。
-   */
+   * MessageBubble 宸叉湁 data-role="user"锛岀洿鎺ユ煡璇紝鏃犻渶棰濆鍖呰９ div銆?   * 鐢?requestAnimationFrame 纭繚 DOM 瀹屾垚娓叉煋鍚庡啀璁＄畻浣嶇疆銆?   */
   useEffect(() => {
     const container = messagesContainerRef.current
     if (!container) return
 
     requestAnimationFrame(() => {
-      // MessageBubble 自带 data-role 属性（see MessageBubble.tsx）
-      const userMsgs = container.querySelectorAll('[data-role="user"]')
+      // MessageBubble 鑷甫 data-role 灞炴€э紙see MessageBubble.tsx锛?      const userMsgs = container.querySelectorAll('[data-role="user"]')
       const lastUserEl = userMsgs[userMsgs.length - 1] as HTMLElement | undefined
 
       if (lastUserEl) {
-        // 遍历 offsetParent 链计算相对容器的绝对偏移，比 getBoundingClientRect 更稳
+        // 閬嶅巻 offsetParent 閾捐绠楃浉瀵瑰鍣ㄧ殑缁濆鍋忕Щ锛屾瘮 getBoundingClientRect 鏇寸ǔ
         let offsetTop = 0
         let cur: HTMLElement | null = lastUserEl
         while (cur && cur !== container) {
@@ -202,7 +193,7 @@ export function ChatWindow() {
     setMessages((prev) => [...prev, userMsg])
     setLoading(true)
 
-    // 先加一个空的 assistant 占位
+    // 鍏堝姞涓€涓┖鐨?assistant 鍗犱綅
     const placeholderMsg: ChatMessage = { role: 'assistant', blocks: [] }
     setMessages((prev) => [...prev, placeholderMsg])
 
@@ -222,7 +213,7 @@ export function ChatWindow() {
       }, selectedModel || undefined)
       await fetchProfile(sessionId)
     } catch (e) {
-      const errText = `请求失败: ${e instanceof Error ? e.message : String(e)}`
+      const errText = `璇锋眰澶辫触: ${e instanceof Error ? e.message : String(e)}`
       setMessages((prev) => {
         const next = [...prev]
         const last = next[next.length - 1]
@@ -239,10 +230,10 @@ export function ChatWindow() {
     }
   }
 
-  /** 当用户点击 Block 中的交互组件时，自动作为新消息发送 */
+  /** 褰撶敤鎴风偣鍑?Block 涓殑浜や簰缁勪欢鏃讹紝鑷姩浣滀负鏂版秷鎭彂閫?*/
   const handleBlockRespond = useCallback(
     async (msgIndex: number, responseText: string, blockId?: string) => {
-      // Block 级标记：只禁用本次点击的 block，其余 block 保持可用
+      // Block 绾ф爣璁帮細鍙鐢ㄦ湰娆＄偣鍑荤殑 block锛屽叾浣?block 淇濇寔鍙敤
       setMessages((prev) => {
         const next = [...prev]
         const msg = next[msgIndex]
@@ -251,8 +242,7 @@ export function ChatWindow() {
           if (blockId && !respondedBlocks.includes(blockId)) {
             respondedBlocks.push(blockId)
           }
-          // 检查该消息内所有交互型 block 是否都已响应（向后兼容 _responded）
-          const interactiveIds = (msg.blocks ?? [])
+          // 妫€鏌ヨ娑堟伅鍐呮墍鏈変氦浜掑瀷 block 鏄惁閮藉凡鍝嶅簲锛堝悜鍚庡吋瀹?_responded锛?          const interactiveIds = (msg.blocks ?? [])
             .filter((b) => b.type === 'choice' || b.type === 'rating' || b.type === 'text_input')
             .map((b) => ('id' in b ? (b as { id: string }).id : ''))
             .filter(Boolean)
@@ -262,8 +252,7 @@ export function ChatWindow() {
         return next
       })
       setInput(responseText)
-      // 自动发送
-      if (!requireCurrentUser() || !sessionId || loading) return
+      // 鑷姩鍙戦€?      if (!requireCurrentUser() || !sessionId || loading) return
       setLoading(true)
 
       const userMsg: ChatMessage = { role: 'user', content: responseText }
@@ -287,7 +276,7 @@ export function ChatWindow() {
         }, selectedModel || undefined)
         await fetchProfile(sessionId)
       } catch (e) {
-        const errText = `请求失败: ${e instanceof Error ? e.message : String(e)}`
+        const errText = `璇锋眰澶辫触: ${e instanceof Error ? e.message : String(e)}`
         setMessages((prev) => {
           const next = [...prev]
           const last = next[next.length - 1]
@@ -311,11 +300,10 @@ export function ChatWindow() {
     try {
       await resetSession(sessionId)
       setMessages([])
-      setInput(INIT_MESSAGE)   // 重置后恢复固定初始文本
-      await fetchProfile(sessionId)
+      setInput(INIT_MESSAGE)   // 閲嶇疆鍚庢仮澶嶅浐瀹氬垵濮嬫枃鏈?      await fetchProfile(sessionId)
       inputRef.current?.focus()
     } catch (e) {
-      alert(`重置失败: ${e instanceof Error ? e.message : String(e)}`)
+      alert(`閲嶇疆澶辫触: ${e instanceof Error ? e.message : String(e)}`)
     }
   }
 
@@ -328,12 +316,12 @@ export function ChatWindow() {
   const lockState: InputLockState = loading ? 'locked' : getInputLockState(messages)
   const isInitial = lockState === 'initial'
   const isLocked = lockState === 'locked'
-  // initial 状态的显示值固定为 INIT_MESSAGE；locked/active 使用 input state
+  // initial 鐘舵€佺殑鏄剧ず鍊煎浐瀹氫负 INIT_MESSAGE锛沴ocked/active 浣跨敤 input state
   const textareaValue = isInitial ? INIT_MESSAGE : input
-  const textareaPlaceholder = isLocked ? '请从上方选项中作答' : '输入消息...'
+  const textareaPlaceholder = isLocked ? '璇蜂粠涓婃柟閫夐」涓綔绛? : '杈撳叆娑堟伅...'
 
   if (!initialized) {
-    return <div className="chat-loading">加载中...</div>
+    return <div className="chat-loading">鍔犺浇涓?..</div>
   }
 
   return (
@@ -342,14 +330,13 @@ export function ChatWindow() {
         <div ref={messagesContainerRef} className="messages">
           {messages.length === 0 && (
             <div className="welcome">
-              <p>你好，我是科研数字分身采集助手。</p>
-              <p>可以说「帮我建立分身」开始。</p>
+              <p>浣犲ソ锛屾垜鏄鐮旀暟瀛楀垎韬噰闆嗗姪鎵嬨€?/p>
+              <p>鍙互璇淬€屽府鎴戝缓绔嬪垎韬€嶅紑濮嬨€?/p>
             </div>
           )}
           {messages
             .filter((m, i) => {
-              // 过滤掉最后一条空占位 assistant 消息（正在加载时）
-              if (
+              // 杩囨护鎺夋渶鍚庝竴鏉＄┖鍗犱綅 assistant 娑堟伅锛堟鍦ㄥ姞杞芥椂锛?              if (
                 showLoadingDots &&
                 i === messages.length - 1 &&
                 m.role === 'assistant' &&
@@ -359,10 +346,10 @@ export function ChatWindow() {
             })
             .map((m, i) => {
               if (m.role === 'user') {
-                // MessageBubble 自带 data-role="user"，供滚动逻辑查询
+                // MessageBubble 鑷甫 data-role="user"锛屼緵婊氬姩閫昏緫鏌ヨ
                 return <MessageBubble key={i} role="user" content={m.content ?? ''} />
               }
-              // assistant: blocks 模式
+              // assistant: blocks 妯″紡
               if (m.blocks && m.blocks.length > 0) {
                 const isLatest = i === messages.length - 1
                 const isInteractive = hasInteractiveBlock(m.blocks)
@@ -372,7 +359,7 @@ export function ChatWindow() {
                     <RobotAvatar />
                     <div className="assistant-blocks">
                       {m.blocks.map((block, bi) => {
-                        // Block 级响应状态：每个 block 独立判断是否已被回答
+                        // Block 绾у搷搴旂姸鎬侊細姣忎釜 block 鐙珛鍒ゆ柇鏄惁宸茶鍥炵瓟
                         const blockId = 'id' in block ? (block as { id: string }).id : undefined
                         const isBlockResponded = blockId
                           ? respondedBlocks.includes(blockId)
@@ -391,8 +378,7 @@ export function ChatWindow() {
                   </div>
                 )
               }
-              // 旧式纯文本（backward compat）
-              return <MessageBubble key={i} role="assistant" content={m.content ?? ''} />
+              // 鏃у紡绾枃鏈紙backward compat锛?              return <MessageBubble key={i} role="assistant" content={m.content ?? ''} />
             })}
           {showLoadingDots && (
             <div className="loading-message-row">
@@ -413,12 +399,10 @@ export function ChatWindow() {
         >
           <div className="chat-input-inner">
             {!currentUser && !sessionId ? (
-              // 既未登录、又无匿名 session（后端不可达）→ 才提示登录
-              <div className="chat-login-prompt">
-                <p>请先登录后再与数字分身助手对话</p>
+              // 鏃㈡湭鐧诲綍銆佸張鏃犲尶鍚?session锛堝悗绔笉鍙揪锛夆啋 鎵嶆彁绀虹櫥褰?              <div className="chat-login-prompt">
+                <p>璇峰厛鐧诲綍鍚庡啀涓庢暟瀛楀垎韬姪鎵嬪璇?/p>
                 <Link to="/login" state={{ from: '/profile-helper' }} className="chat-login-link">
-                  去登录
-                </Link>
+                  鍘荤櫥褰?                </Link>
               </div>
             ) : (
               <>
@@ -466,14 +450,14 @@ export function ChatWindow() {
 
                 <div className="chat-hint-row">
                   <span className="input-hint">
-                    {isLocked ? '请点击上方选项作答' : isInitial ? '点击发送开始建立分身' : 'Enter 发送 · Shift+Enter 换行'}
+                    {isLocked ? '璇风偣鍑讳笂鏂归€夐」浣滅瓟' : isInitial ? '鐐瑰嚮鍙戦€佸紑濮嬪缓绔嬪垎韬? : 'Enter 鍙戦€?路 Shift+Enter 鎹㈣'}
                   </span>
                   <div className="chat-hint-actions">
                     <select
                       className="model-select-single"
                       value={selectedModel}
                       onChange={(e) => setSelectedModel(e.target.value)}
-                      title="选择模型"
+                      title="閫夋嫨妯″瀷"
                     >
                       {PROFILE_HELPER_MODELS.map((m) => (
                         <option key={m.value} value={m.value}>
@@ -489,7 +473,7 @@ export function ChatWindow() {
                       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
-                      我的分身
+                      鎴戠殑鍒嗚韩
                     </button>
                     <button
                       type="button"
@@ -500,7 +484,7 @@ export function ChatWindow() {
                       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                       </svg>
-                      重置会话
+                      閲嶇疆浼氳瘽
                     </button>
                   </div>
                 </div>

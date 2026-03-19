@@ -1,4 +1,4 @@
-/** User avatar SVG */
+﻿/** User avatar SVG */
 export function UserAvatar() {
   return (
     <div className="message-avatar message-avatar-user" aria-hidden>
@@ -44,7 +44,7 @@ export function RobotAvatar() {
 /** Loading dots */
 export function LoadingDots() {
   return (
-    <div className="loading-dots" aria-label="思考中">
+    <div className="loading-dots" aria-label="鎬濊€冧腑">
       <span className="dot" />
       <span className="dot" />
       <span className="dot" />

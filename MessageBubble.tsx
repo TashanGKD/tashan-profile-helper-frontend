@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+﻿import { useState, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
@@ -28,9 +28,9 @@ function CodeBlockWithCopy({
         type="button"
         className="code-copy-btn"
         onClick={handleCopy}
-        aria-label="复制"
+        aria-label="澶嶅埗"
       >
-        {copied ? '已复制' : '复制'}
+        {copied ? '宸插鍒? : '澶嶅埗'}
       </button>
       <pre ref={preRef} {...props}>
         {children}

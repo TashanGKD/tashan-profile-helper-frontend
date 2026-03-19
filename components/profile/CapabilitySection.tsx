@@ -1,12 +1,12 @@
-import type { StructuredProfile } from '../../types'
+﻿import type { StructuredProfile } from '../../types'
 
 const PROCESS_LABELS: Record<string, string> = {
-  problem_definition: '问题定义',
-  literature: '文献整合',
-  design: '方案设计',
-  execution: '实验执行',
-  writing: '论文写作',
-  management: '项目管理',
+  problem_definition: '闂瀹氫箟',
+  literature: '鏂囩尞鏁村悎',
+  design: '鏂规璁捐',
+  execution: '瀹為獙鎵ц',
+  writing: '璁烘枃鍐欎綔',
+  management: '椤圭洰绠＄悊',
 }
 
 const PROCESS_ORDER = ['problem_definition', 'literature', 'design', 'execution', 'writing', 'management']
@@ -33,7 +33,7 @@ export function CapabilitySection({ capability }: CapabilitySectionProps) {
 
   return (
     <section className="pv-section">
-      <h3 className="pv-section-title">科研能力</h3>
+      <h3 className="pv-section-title">绉戠爺鑳藉姏</h3>
       <div className="pv-capability-grid">
         {hasRadar && (
           <div className="pv-radar-wrap">
@@ -86,15 +86,15 @@ export function CapabilitySection({ capability }: CapabilitySectionProps) {
       </div>
       {tech_stack.length > 0 && (
         <div className="pv-tech-stack">
-          <h4>技术栈</h4>
+          <h4>鎶€鏈爤</h4>
           <div className="pv-tech-tags">
             {tech_stack.map((t, i) => (
-              <span key={i} className="pv-tech-tag">{t.tech}{t.level ? ` · ${t.level}` : ''}</span>
+              <span key={i} className="pv-tech-tag">{t.tech}{t.level ? ` 路 ${t.level}` : ''}</span>
             ))}
           </div>
         </div>
       )}
-      {outputs && <p className="pv-outputs"><strong>代表性产出：</strong>{outputs}</p>}
+      {outputs && <p className="pv-outputs"><strong>浠ｈ〃鎬т骇鍑猴細</strong>{outputs}</p>}
     </section>
   )
 }
