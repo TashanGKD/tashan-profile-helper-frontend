@@ -1,4 +1,4 @@
-﻿interface ChartBlockProps {
+interface ChartBlockProps {
   chartType: 'radar' | 'bar'
   title: string
   dimensions: string[]

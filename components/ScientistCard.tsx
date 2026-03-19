@@ -1,4 +1,4 @@
-﻿import type { FamousMatch } from '../types'
+import type { FamousMatch } from '../types'
 
 interface ScientistCardProps {
   scientist: FamousMatch
@@ -17,7 +17,7 @@ export function ScientistCard({ scientist, rank }: ScientistCardProps) {
           </div>
           <span className="sci-card-similarity">{scientist.similarity}%</span>
         </div>
-        <p className="sci-card-meta">{scientist.field} 路 {scientist.era}</p>
+        <p className="sci-card-meta">{scientist.field} · {scientist.era}</p>
         <p className="sci-card-signature">{scientist.signature}</p>
         <p className="sci-card-reason">{scientist.reason}</p>
       </div>

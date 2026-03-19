@@ -1,4 +1,4 @@
-﻿import type { StructuredProfile } from '../../types'
+import type { StructuredProfile } from '../../types'
 import { DataSourceBadge } from './DataSourceBadge'
 
 interface ProfileHeaderProps {
@@ -15,7 +15,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
     <section className="pv-header">
       <div className="pv-header-top">
         <div>
-          <h2 className="pv-name">{name || '鏈懡鍚?}</h2>
+          <h2 className="pv-name">{name || '未命名'}</h2>
           <div className="pv-tags">
             {identity.research_stage && <span className="pv-tag">{identity.research_stage}</span>}
             {identity.primary_field && <span className="pv-tag">{identity.primary_field}</span>}
@@ -28,8 +28,8 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
       </div>
       <div className="pv-progress">
         <div className="pv-progress-info">
-          <span>鐢诲儚瀹屾垚搴?/span>
-          <span>{filled}/{total} 缁村害 路 {pct}%</span>
+          <span>画像完成度</span>
+          <span>{filled}/{total} 维度 · {pct}%</span>
         </div>
         <div className="pv-progress-bar">
           <div className="pv-progress-fill" style={{ width: `${pct}%` }} />

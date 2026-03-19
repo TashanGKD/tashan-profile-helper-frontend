@@ -1,4 +1,4 @@
-﻿/** Profile helper API: session, profile, chat stream, blocks, download, scales, scientist match */
+/** Profile helper API: session, profile, chat stream, blocks, download, scales, scientist match */
 import { profileHelperApi } from '../../api/client'
 import type { Block, FamousMatchResult, FieldRecommendation, StructuredProfile } from './types'
 
@@ -21,7 +21,7 @@ export async function getOrCreateSession(existingId?: string): Promise<string> {
   return data.session_id
 }
 
-/** 鏃у紡娴佸紡鏂囨湰鎺ュ彛锛堜繚鐣欏吋瀹癸級 */
+/** 旧式流式文本接口（保留兼容） */
 export async function sendMessage(
   sessionId: string,
   message: string,
@@ -33,9 +33,9 @@ export async function sendMessage(
     headers: getAuthFetchHeaders(true),
     body: JSON.stringify({ session_id: sessionId, message, model: model || undefined }),
   })
-  if (!res.ok) throw new Error(`璇锋眰澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`请求失败: ${res.status}`)
   const reader = res.body?.getReader()
-  if (!reader) throw new Error('鏃犳硶璇诲彇鍝嶅簲娴?)
+  if (!reader) throw new Error('无法读取响应流')
   const decoder = new TextDecoder()
   let buffer = ''
   const SSE_REGEX = /\r?\n\r?\n/
@@ -52,7 +52,7 @@ export async function sendMessage(
         try {
           const obj = JSON.parse(payload)
           if (obj.content) onChunk(obj.content)
-          if (obj.error) onChunk(`閿欒: ${obj.error}`)
+          if (obj.error) onChunk(`错误: ${obj.error}`)
         } catch {
           // ignore parse errors
         }
@@ -62,7 +62,9 @@ export async function sendMessage(
 }
 
 /**
- * Block 鍗忚鎺ュ彛锛氭瘡涓?SSE 浜嬩欢鏄竴涓?Block JSON銆? * onBlock 鍥炶皟鍦ㄦ敹鍒版瘡涓?Block 鏃惰Е鍙戙€? */
+ * Block 协议接口：每个 SSE 事件是一个 Block JSON。
+ * onBlock 回调在收到每个 Block 时触发。
+ */
 export async function sendMessageBlocks(
   sessionId: string,
   message: string,
@@ -74,9 +76,9 @@ export async function sendMessageBlocks(
     headers: getAuthFetchHeaders(true),
     body: JSON.stringify({ session_id: sessionId, message, model: model || undefined }),
   })
-  if (!res.ok) throw new Error(`璇锋眰澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`请求失败: ${res.status}`)
   const reader = res.body?.getReader()
-  if (!reader) throw new Error('鏃犳硶璇诲彇鍝嶅簲娴?)
+  if (!reader) throw new Error('无法读取响应流')
   const decoder = new TextDecoder()
   let buffer = ''
   while (true) {
@@ -115,7 +117,7 @@ export async function getProfile(sessionId: string): Promise<{
   const res = await fetch(`${API_BASE}/profile-helper/profile/${sessionId}`, {
     headers: getAuthFetchHeaders(),
   })
-  if (!res.ok) throw new Error(`鑾峰彇鐢诲儚澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`获取画像失败: ${res.status}`)
   return res.json()
 }
 
@@ -123,7 +125,7 @@ export async function getStructuredProfile(sessionId: string): Promise<Structure
   const res = await fetch(`${API_BASE}/profile-helper/profile/${sessionId}/structured`, {
     headers: getAuthFetchHeaders(),
   })
-  if (!res.ok) throw new Error(`鑾峰彇缁撴瀯鍖栫敾鍍忓け璐? ${res.status}`)
+  if (!res.ok) throw new Error(`获取结构化画像失败: ${res.status}`)
   return res.json()
 }
 
@@ -132,7 +134,7 @@ export async function resetSession(sessionId: string): Promise<void> {
     method: 'POST',
     headers: getAuthFetchHeaders(),
   })
-  if (!res.ok) throw new Error(`閲嶇疆澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`重置失败: ${res.status}`)
 }
 
 export async function submitScale(
@@ -153,17 +155,17 @@ export async function submitScale(
       result_summary: resultSummary,
     }),
   })
-  if (!res.ok) throw new Error(`鎻愪氦澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`提交失败: ${res.status}`)
 }
 
-// 鈹€鈹€ 绉戝瀹跺尮閰?API 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ── 科学家匹配 API ──────────────────────────────────────────────
 
 export async function getFamousMatches(sessionId: string): Promise<FamousMatchResult> {
   const res = await fetch(
     `${API_BASE}/profile-helper/profile/${sessionId}/scientists/famous`,
     { headers: getAuthFetchHeaders() }
   )
-  if (!res.ok) throw new Error(`鑾峰彇鍖归厤澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`获取匹配失败: ${res.status}`)
   return res.json()
 }
 
@@ -172,12 +174,12 @@ export async function getFieldRecommendations(sessionId: string): Promise<FieldR
     `${API_BASE}/profile-helper/profile/${sessionId}/scientists/field`,
     { headers: getAuthFetchHeaders() }
   )
-  if (!res.ok) throw new Error(`鑾峰彇鎺ㄨ崘澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`获取推荐失败: ${res.status}`)
   const data = await res.json()
   return data.recommendations
 }
 
-// 鈹€鈹€ 鍙戝竷鍒嗚韩 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ── 发布分身 ────────────────────────────────────────────────────
 
 export interface PublishTwinPayload {
   session_id: string
@@ -206,7 +208,7 @@ export async function getChatHistory(sessionId: string): Promise<{
   const res = await fetch(`${API_BASE}/profile-helper/chat-history/${encodeURIComponent(sessionId)}`, {
     headers: getAuthFetchHeaders(),
   })
-  if (!res.ok) throw new Error(`鑾峰彇瀵硅瘽鍘嗗彶澶辫触: ${res.status}`)
+  if (!res.ok) throw new Error(`获取对话历史失败: ${res.status}`)
   return res.json()
 }
 
@@ -217,7 +219,7 @@ export async function publishTwin(payload: PublishTwinPayload): Promise<PublishT
     body: JSON.stringify(payload),
   })
   if (!res.ok) {
-    let detail = `鍙戝竷澶辫触: ${res.status}`
+    let detail = `发布失败: ${res.status}`
     try {
       const data = await res.json()
       detail = data.detail || detail

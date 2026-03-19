@@ -1,20 +1,20 @@
-﻿import type { StructuredProfile, PersonalityDim } from '../../types'
+import type { StructuredProfile, PersonalityDim } from '../../types'
 import { DataSourceBadge } from './DataSourceBadge'
 
 const DIM_ORDER = [
-  { key: 'extraversion',      label: '澶栧悜鎬? },
-  { key: 'agreeableness',     label: '瀹滀汉鎬? },
-  { key: 'conscientiousness', label: '灏借矗鎬? },
-  { key: 'neuroticism',       label: '绁炵粡璐? },
-  { key: 'openness',          label: '寮€鏀炬€? },
+  { key: 'extraversion',      label: '外向性' },
+  { key: 'agreeableness',     label: '宜人性' },
+  { key: 'conscientiousness', label: '尽责性' },
+  { key: 'neuroticism',       label: '神经质' },
+  { key: 'openness',          label: '开放性' },
 ]
 
 function getLevel(score: number): string {
-  if (score >= 4.5) return '鏋侀珮'
-  if (score >= 3.5) return '鍋忛珮'
-  if (score >= 2.5) return '涓瓑'
-  if (score >= 1.5) return '鍋忎綆'
-  return '鏋佷綆'
+  if (score >= 4.5) return '极高'
+  if (score >= 3.5) return '偏高'
+  if (score >= 2.5) return '中等'
+  if (score >= 1.5) return '偏低'
+  return '极低'
 }
 
 interface PersonalitySectionProps {
@@ -37,8 +37,8 @@ export function PersonalitySection({ data }: PersonalitySectionProps) {
   if (!hasData) {
     return (
       <section className="pv-section">
-        <h3 className="pv-section-title">浜烘牸鐗瑰緛 (Mini-IPIP)</h3>
-        <p className="pv-empty">灏氭湭璇勪及銆?/p>
+        <h3 className="pv-section-title">人格特征 (Mini-IPIP)</h3>
+        <p className="pv-empty">尚未评估。</p>
       </section>
     )
   }
@@ -55,7 +55,7 @@ export function PersonalitySection({ data }: PersonalitySectionProps) {
   return (
     <section className="pv-section">
       <div className="pv-section-header">
-        <h3 className="pv-section-title">浜烘牸鐗瑰緛 (Mini-IPIP)</h3>
+        <h3 className="pv-section-title">人格特征 (Mini-IPIP)</h3>
         <DataSourceBadge source={source} />
       </div>
       <div className="pv-personality-grid">

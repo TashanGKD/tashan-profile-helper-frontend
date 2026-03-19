@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getScaleById } from '../data/scales'
 import { calculateAMS_RAI, calculateRCSS, calculateScores } from '../utils/scoring'
@@ -14,19 +14,19 @@ function getStoredSessionId(): string | null {
   return null
 }
 
-/** 娓叉煋 Mini-IPIP 娴嬭瘯缁撴灉 */
+/** 渲染 Mini-IPIP 测试结果 */
 function IPIPResult({ scores }: { scores: Record<string, number> }) {
   const dims = [
-    { id: 'E', label: '澶栧悜鎬? },
-    { id: 'A', label: '瀹滀汉鎬? },
-    { id: 'C', label: '灏借矗鎬? },
-    { id: 'N', label: '绁炵粡璐? },
-    { id: 'I', label: '寮€鏀炬€?鏅哄姏' },
+    { id: 'E', label: '外向性' },
+    { id: 'A', label: '宜人性' },
+    { id: 'C', label: '尽责性' },
+    { id: 'N', label: '神经质' },
+    { id: 'I', label: '开放性/智力' },
   ]
   const levelLabel = (v: number) => {
-    if (v >= 4.2) return '楂?
-    if (v >= 2.8) return '涓?
-    return '浣?
+    if (v >= 4.2) return '高'
+    if (v >= 2.8) return '中'
+    return '低'
   }
   return (
     <div className="score-table">
@@ -36,7 +36,8 @@ function IPIPResult({ scores }: { scores: Record<string, number> }) {
           <span className="score-val">
             {(scores[d.id] || 0).toFixed(2)}
             <span style={{ color: '#9ca3af', marginLeft: 4, fontSize: '0.8em' }}>
-              锛坽levelLabel(scores[d.id] || 0)}锛?            </span>
+              （{levelLabel(scores[d.id] || 0)}）
+            </span>
           </span>
         </div>
       ))}
@@ -44,17 +45,17 @@ function IPIPResult({ scores }: { scores: Record<string, number> }) {
   )
 }
 
-/** 娓叉煋 AMS 瀹屾暣 7 缁寸粨鏋?*/
+/** 渲染 AMS 完整 7 维结果 */
 function AMSResult({ scores }: { scores: Record<string, number> }) {
   const { intrinsicTotal, extrinsicTotal, RAI } = calculateAMS_RAI(scores)
   const dims = [
-    { id: 'know',           label: '姹傜煡鍐呭湪鍔ㄦ満',     group: 'intrinsic' },
-    { id: 'accomplishment', label: '鎴愬氨鍐呭湪鍔ㄦ満',     group: 'intrinsic' },
-    { id: 'stimulation',    label: '浣撻獙鍒烘縺鍐呭湪鍔ㄦ満', group: 'intrinsic' },
-    { id: 'identified',     label: '璁ゅ悓璋冭妭',         group: 'autonomous' },
-    { id: 'introjected',    label: '鍐呮憚璋冭妭',         group: 'controlled' },
-    { id: 'external',       label: '澶栭儴璋冭妭',         group: 'controlled' },
-    { id: 'amotivation',    label: '鏃犲姩鏈?,           group: 'amotivation' },
+    { id: 'know',           label: '求知内在动机',     group: 'intrinsic' },
+    { id: 'accomplishment', label: '成就内在动机',     group: 'intrinsic' },
+    { id: 'stimulation',    label: '体验刺激内在动机', group: 'intrinsic' },
+    { id: 'identified',     label: '认同调节',         group: 'autonomous' },
+    { id: 'introjected',    label: '内摄调节',         group: 'controlled' },
+    { id: 'external',       label: '外部调节',         group: 'controlled' },
+    { id: 'amotivation',    label: '无动机',           group: 'amotivation' },
   ]
   return (
     <>
@@ -67,13 +68,14 @@ function AMSResult({ scores }: { scores: Record<string, number> }) {
         ))}
       </div>
       <div className="score-summary">
-        <p>鍐呭湪鍔ㄦ満鎬诲垎锛歿intrinsicTotal}</p>
-        <p>澶栧湪鍔ㄦ満鎬诲垎锛歿extrinsicTotal}</p>
+        <p>内在动机总分：{intrinsicTotal}</p>
+        <p>外在动机总分：{extrinsicTotal}</p>
         <p>
-          鑷富鍔ㄦ満鎸囨暟 (RAI)锛?strong>{RAI}</strong>
+          自主动机指数 (RAI)：<strong>{RAI}</strong>
         </p>
         <p style={{ fontSize: '0.8em', color: '#9ca3af' }}>
-          RAI = 3脳姹傜煡 + 3脳鎴愬氨 + 3脳浣撻獙鍒烘縺 + 2脳璁ゅ悓 鈭?鍐呮憚 鈭?2脳澶栭儴 鈭?3脳鏃犲姩鏈?        </p>
+          RAI = 3×求知 + 3×成就 + 3×体验刺激 + 2×认同 − 内摄 − 2×外部 − 3×无动机
+        </p>
       </div>
     </>
   )
@@ -98,9 +100,9 @@ export function ScaleTestPage() {
   if (!scale) {
     return (
       <div className="page-empty">
-        <h2>閲忚〃涓嶅瓨鍦?/h2>
+        <h2>量表不存在</h2>
         <button type="button" className="btn-primary" onClick={() => navigate('/profile-helper/scales')}>
-          杩斿洖閲忚〃鍒楄〃
+          返回量表列表
         </button>
       </div>
     )
@@ -128,7 +130,7 @@ export function ScaleTestPage() {
   const handleSave = async () => {
     const sessionId = getStoredSessionId()
     if (!sessionId) {
-      alert('璇峰厛鍦ㄣ€屽璇濋噰闆嗐€嶉〉闈㈠缓绔嬩細璇?)
+      alert('请先在「对话采集」页面建立会话')
       return
     }
 
@@ -146,10 +148,10 @@ export function ScaleTestPage() {
     try {
       await submitScale(sessionId, scale.id, answers, scores, payload)
       localStorage.setItem(localKey, JSON.stringify(payload))
-      alert('閲忚〃缁撴灉宸蹭繚瀛?)
+      alert('量表结果已保存')
     } catch {
       localStorage.setItem(localKey, JSON.stringify(payload))
-      alert('褰撳墠鍚庣鏈紑鍚噺琛ㄦ彁浜ゆ帴鍙ｏ紝缁撴灉宸叉湰鍦颁繚瀛?)
+      alert('当前后端未开启量表提交接口，结果已本地保存')
     } finally {
       setSaving(false)
     }
@@ -163,7 +165,7 @@ export function ScaleTestPage() {
     return (
       <div className="scale-test-page">
         <div className="scale-result">
-          <h2>{scale.name} 鈥?娴嬭瘯瀹屾垚</h2>
+          <h2>{scale.name} — 测试完成</h2>
 
           {scale.id === 'rcss' && (
             <>
@@ -177,13 +179,13 @@ export function ScaleTestPage() {
               </div>
               {rcss && (
                 <div className="score-summary">
-                  <p>妯悜鏁村悎鍒?(I)锛歿rcss.I}</p>
-                  <p>鍨傜洿娣卞害鍒?(D)锛歿rcss.D}</p>
+                  <p>横向整合分 (I)：{rcss.I}</p>
+                  <p>垂直深度分 (D)：{rcss.D}</p>
                   <p>
-                    璁ょ煡椋庢牸鎸囨暟 (CSI)锛?strong>{rcss.CSI}</strong>
+                    认知风格指数 (CSI)：<strong>{rcss.CSI}</strong>
                   </p>
                   <p>
-                    绫诲瀷锛?strong>{rcss.type}</strong>
+                    类型：<strong>{rcss.type}</strong>
                   </p>
                 </div>
               )}
@@ -196,14 +198,14 @@ export function ScaleTestPage() {
 
           <div className="scale-result-actions">
             <button type="button" className="btn-primary" onClick={handleSave} disabled={saving}>
-              {saving ? '淇濆瓨涓?..' : '淇濆瓨缁撴灉'}
+              {saving ? '保存中...' : '保存结果'}
             </button>
             <button
               type="button"
               className="btn-secondary"
               onClick={() => navigate('/profile-helper/scales')}
             >
-              杩斿洖閲忚〃鍒楄〃
+              返回量表列表
             </button>
             <button
               type="button"
@@ -214,7 +216,7 @@ export function ScaleTestPage() {
                 setCompleted(false)
               }}
             >
-              閲嶆柊娴嬭瘯
+              重新测试
             </button>
           </div>
         </div>
@@ -270,14 +272,15 @@ export function ScaleTestPage() {
             onClick={() => setCurrentIdx((i) => Math.max(0, i - 1))}
             disabled={currentIdx === 0}
           >
-            鈫?涓婁竴棰?          </button>
+            ← 上一题
+          </button>
           <button
             type="button"
             className="btn-secondary"
             onClick={goNext}
             disabled={answers[question.id] == null}
           >
-            {currentIdx === scale.questions.length - 1 ? '瀹屾垚' : '涓嬩竴棰?鈫?}
+            {currentIdx === scale.questions.length - 1 ? '完成' : '下一题 →'}
           </button>
         </div>
       </div>

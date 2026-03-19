@@ -1,14 +1,14 @@
-﻿import type { StructuredProfile } from '../../types'
+import type { StructuredProfile } from '../../types'
 import { DataSourceBadge } from './DataSourceBadge'
 
 const DIM_ORDER = [
-  { key: 'know',           label: '姹傜煡',     group: 'intrinsic'   },
-  { key: 'accomplishment', label: '鎴愬氨',     group: 'intrinsic'   },
-  { key: 'stimulation',    label: '浣撻獙鍒烘縺', group: 'intrinsic'   },
-  { key: 'identified',     label: '璁ゅ悓璋冭妭', group: 'autonomous'  },
-  { key: 'introjected',    label: '鍐呮憚璋冭妭', group: 'controlled'  },
-  { key: 'external',       label: '澶栭儴璋冭妭', group: 'controlled'  },
-  { key: 'amotivation',    label: '鏃犲姩鏈?,   group: 'amotivation' },
+  { key: 'know',           label: '求知',     group: 'intrinsic'   },
+  { key: 'accomplishment', label: '成就',     group: 'intrinsic'   },
+  { key: 'stimulation',    label: '体验刺激', group: 'intrinsic'   },
+  { key: 'identified',     label: '认同调节', group: 'autonomous'  },
+  { key: 'introjected',    label: '内摄调节', group: 'controlled'  },
+  { key: 'external',       label: '外部调节', group: 'controlled'  },
+  { key: 'amotivation',    label: '无动机',   group: 'amotivation' },
 ]
 
 interface MotivationSectionProps {
@@ -22,8 +22,8 @@ export function MotivationSection({ data }: MotivationSectionProps) {
   if (!hasDims) {
     return (
       <section className="pv-section">
-        <h3 className="pv-section-title">瀛︽湳鍔ㄦ満 (AMS)</h3>
-        <p className="pv-empty">灏氭湭璇勪及銆?/p>
+        <h3 className="pv-section-title">学术动机 (AMS)</h3>
+        <p className="pv-empty">尚未评估。</p>
       </section>
     )
   }
@@ -31,7 +31,7 @@ export function MotivationSection({ data }: MotivationSectionProps) {
   return (
     <section className="pv-section">
       <div className="pv-section-header">
-        <h3 className="pv-section-title">瀛︽湳鍔ㄦ満 (AMS)</h3>
+        <h3 className="pv-section-title">学术动机 (AMS)</h3>
         <DataSourceBadge source={data.source} />
       </div>
       <div className="pv-motivation-chart">
@@ -49,8 +49,8 @@ export function MotivationSection({ data }: MotivationSectionProps) {
         })}
       </div>
       <div className="pv-mot-summary">
-        {intrinsic_total != null && <span>鍐呭湪鍔ㄦ満鎬诲垎 <strong>{intrinsic_total.toFixed(1)}</strong></span>}
-        {extrinsic_total != null && <span>澶栧湪鍔ㄦ満鎬诲垎 <strong>{extrinsic_total.toFixed(1)}</strong></span>}
+        {intrinsic_total != null && <span>内在动机总分 <strong>{intrinsic_total.toFixed(1)}</strong></span>}
+        {extrinsic_total != null && <span>外在动机总分 <strong>{extrinsic_total.toFixed(1)}</strong></span>}
         {rai != null && <span>RAI <strong>{rai > 0 ? '+' : ''}{rai.toFixed(1)}</strong></span>}
       </div>
     </section>

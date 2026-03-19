@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 
 interface CopyableBlockProps {
   title?: string
@@ -19,7 +19,7 @@ export function CopyableBlock({ title, content }: CopyableBlockProps) {
       <div className="copyable-header">
         {title && <span className="copyable-title">{title}</span>}
         <button type="button" className="copyable-btn" onClick={handleCopy}>
-          {copied ? '鉁?宸插鍒? : '涓€閿鍒?}
+          {copied ? '✓ 已复制' : '一键复制'}
         </button>
       </div>
       <pre className="copyable-content">{content}</pre>

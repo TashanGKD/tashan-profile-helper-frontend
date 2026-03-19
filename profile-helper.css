@@ -1,4 +1,4 @@
-﻿/* Profile helper module styles */
+/* Profile helper module styles */
 .chat-layout {
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
-  /* 茅聵藳膰颅藰莽搂钮暮聤篓莽扭呕膰钮職暮聤篓莽艩偶茅聙聫 */
+  /* é˛ć­˘ç§ťĺ¨çŤŻćťĺ¨çŠżé */
   overscroll-behavior: contain;
 }
 
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* 茅聵藳膰颅藰膰钮職暮聤篓莽艩偶茅聙聫暮聢掳莽聢艣暮沤拧暮聶篓 */
+  /* é˛ć­˘ćťĺ¨çŠżéĺ°çśĺŽšĺ¨ */
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
@@ -101,7 +101,7 @@
 }
 
 .message-avatar-robot {
-  background: var(--text-primary); /* 膰藝膮膷聯聺膷聣藳 */
+  background: var(--text-primary); /* ćˇąčč˛ */
   color: #ffffff;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .message-avatar-user {
-  background: var(--text-primary); /* 膰藝膮膷聯聺膷聣藳 */
+  background: var(--text-primary); /* ćˇąčč˛ */
   color: #ffffff;
 }
 
@@ -125,7 +125,7 @@
   max-width: calc(100% - 44px);
   min-width: 0;
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-xl); /* 16px - 暮呕拧膷呕聺膰掳聰膰艂膭 */
+  border-radius: var(--radius-xl); /* 16px - ĺŻščŻć°ćłĄ */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   overflow-wrap: break-word;
 }
@@ -191,7 +191,7 @@
   border-left-width: 0;
 }
 
-/* 盲钮艁莽聽聛暮聺聴膹藕職茅聶聬暮聢艣暮沤藵暮艧艢膹藕聦膷艣聟暮聡艧膰聴艣膰掳麓暮拧艂膰钮職暮聤篓膹藕聦茅聛偶暮聟聧膰艧藰暮聡艧暮呕拧膷呕聺膰膭聠 */
+/* äťŁç ĺďźéĺśĺŽ˝ĺşŚďźčśĺşćść°´ĺšłćťĺ¨ďźéżĺćş˘ĺşĺŻščŻćĄ */
 .message-markdown {
   min-width: 0;
   overflow-wrap: break-word;
@@ -252,7 +252,7 @@
   color: #ffffff;
   padding: 2.25rem 1rem 1rem;
   margin: 0 0 1rem;
-  border-radius: var(--radius-lg); /* 16px - 盲钮艁莽聽聛暮聺聴 */
+  border-radius: var(--radius-lg); /* 16px - äťŁç ĺ */
   overflow-x: auto;
   overflow-y: auto;
   max-width: 100%;
@@ -276,7 +276,7 @@
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-md); /* 12px - 暮掳聫膰聦聣茅聮沤 */
+  border-radius: var(--radius-md); /* 12px - ĺ°ćéŽ */
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -307,7 +307,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--text-primary); /* 膰藝膮膷聯聺膷聣藳 */
+  background: var(--text-primary); /* ćˇąčč˛ */
   animation: profile-loading-bounce 0.6s ease-in-out infinite alternate;
 }
 
@@ -342,10 +342,10 @@
   background: var(--bg-container);
   border-top: 1px solid var(--border-default);
   padding: 0.75rem 0;
-  /* 莽膭沤盲偶聺暮艧聲茅聝篓膰聹聣膷艣艂暮陇聼莽艩艧茅聴麓膹藕聦茅聛偶暮聟聧暮聫聭茅聙聛膰聦聣茅聮沤膷藰扭膷艁聛暮聢聡膹藕聢暮聬扭 safe-area膹藕聣 */
+  /* çĄŽäżĺşé¨ćčśłĺ¤çŠşé´ďźéżĺĺéćéŽč˘ŤčŁĺďźĺŤ safe-areaďź */
   padding-bottom: calc(1rem + env(safe-area-inset-bottom));
   flex-shrink: 0;
-  /* 茅聵藳膰颅藰 iOS 膰艩膭莽職沤莽颅聥膰聲聢膰聻聹 */
+  /* é˛ć­˘ iOS ćŠĄçŽç­ćć */
   overscroll-behavior: contain;
 }
 
@@ -382,7 +382,7 @@
   text-decoration: underline;
 }
 
-/* Chat Hint Row - 暮艧聲茅聝篓膹藕職膰聫聬莽陇艧 + 膰篓膭暮聻聥茅聙聣膰聥艩 + 膰聯聧盲藵聹膰聦聣茅聮沤 */
+/* Chat Hint Row - ĺşé¨ďźćç¤ş + ć¨ĄĺéćŠ + ćä˝ćéŽ */
 .chat-hint-row {
   display: flex;
   align-items: center;
@@ -538,14 +538,14 @@
 
 /* Mobile Responsive Optimizations */
 @media (max-width: 640px) {
-  /* 莽搂钮暮聤篓莽扭呕暮藝慕暮聟藝膰聽聫膹藕職暮聻聜莽聸麓膰聨聮暮聢聴 */
+  /* ç§ťĺ¨çŤŻĺˇĽĺˇć ďźĺç´ćĺ */
   .chat-toolbar {
     flex-direction: column;
     align-items: stretch;
     gap: 0.5rem;
   }
 
-  /* 莽搂钮暮聤篓莽扭呕膰聯聧盲藵聹膰聦聣茅聮沤膹藕職莽麓搂暮聡聭暮赂聝暮膮聙膹藕聦盲钮聟膰聵啪莽陇艧暮聸啪膰聽聡 */
+  /* ç§ťĺ¨çŤŻćä˝ćéŽďźç´§ĺĺ¸ĺąďźäťćžç¤şĺžć  */
   .chat-action-buttons {
     justify-content: flex-end;
   }
@@ -561,19 +561,19 @@
     height: 1rem;
   }
 
-  /* 莽搂钮暮聤篓莽扭呕暮聫聭茅聙聛膰聦聣茅聮沤膹藕職暮藰聻暮陇搂膷搂艢膰聭赂暮聦艧暮聼聼 */
+  /* ç§ťĺ¨çŤŻĺéćéŽďźĺ˘ĺ¤§č§Ść¸ĺşĺ */
   .chat-send-btn {
     width: 40px;
     height: 40px;
   }
 
-  /* 莽搂钮暮聤篓莽扭呕膷啪聯暮聟慕膰膭聠 */
+  /* ç§ťĺ¨çŤŻčžĺĽćĄ */
   .chat-textarea {
     min-height: 48px;
-    font-size: 16px; /* 茅聵藳膰颅藰 iOS 莽藕艩膰聰啪 */
+    font-size: 16px; /* é˛ć­˘ iOS çźŠćž */
   }
 
-  /* 莽搂钮暮聤篓莽扭呕膰艣聢膰聛呕膰掳聰膰艂膭 */
+  /* ç§ťĺ¨çŤŻćśćŻć°ćłĄ */
   .message-row {
     max-width: 90%;
   }
@@ -583,18 +583,18 @@
     font-size: 0.9rem;
   }
 
-  /* 莽搂钮暮聤篓莽扭呕膰殴藰膷偶聨膰艣聢膰聛呕 */
+  /* ç§ťĺ¨çŤŻćŹ˘čżćśćŻ */
   .welcome {
     font-size: 0.9rem;
     padding: 0 0.5rem;
   }
 
-  /* 莽搂钮暮聤篓莽扭呕膷啪聯暮聟慕膰聫聬莽陇艧膹藕職莽沤聙暮聦聳 */
+  /* ç§ťĺ¨çŤŻčžĺĽćç¤şďźçŽĺ */
   .input-hint {
     font-size: 0.7rem;
   }
 
-  /* 暮偶扭茅聙聼膰聯聧盲藵聹暮聦艧膹藕職膰聰拧盲赂艧盲赂聤盲赂聥暮聽聠暮聫聽 + 膰篓艦暮聬聭膰钮職暮聤篓膹藕聦茅聛偶暮聟聧膰聳聡暮颅聴膰聢艦膰聳颅 */
+  /* ĺżŤéćä˝ĺşďźćšä¸şä¸ä¸ĺ ĺ  + ć¨Şĺćťĺ¨ďźéżĺćĺ­ćŞć­ */
   .chat-hint-row {
     flex-direction: column;
     align-items: stretch;
@@ -630,15 +630,15 @@
   }
 }
 
-/* 暮啪沤盲偶膭膰木聫膷搂聢暮聶篓莽聣拧膰沤聤暮陇聞莽聬聠 */
+/* ĺžŽäżĄćľč§ĺ¨çšćŽĺ¤ç */
 @supports (-webkit-touch-callout: none) {
   .profile-helper-chat-wrapper {
-    /* iOS Safari / 暮啪沤盲偶膭膰木聫膷搂聢暮聶篓暮聤篓膰聙聛膷搂聠暮聫艁茅扭聵暮艧艢 */
+    /* iOS Safari / ĺžŽäżĄćľč§ĺ¨ĺ¨ćč§ĺŁéŤĺşŚ */
     min-height: calc(100dvh - 12rem - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   }
 
   .messages {
-    /* 茅聵藳膰颅藰 iOS 膰艩膭莽職沤莽颅聥膰聲聢膰聻聹 */
+    /* é˛ć­˘ iOS ćŠĄçŽç­ćć */
     -webkit-overflow-scrolling: touch;
   }
 }
@@ -651,7 +651,7 @@
   color: var(--text-tertiary);
 }
 
-/* Profile Page - 盲赂聨莽藵聭莽扭聶膰聲麓盲藵聯暮赂聝暮膮聙盲赂聙膷聡麓 */
+/* Profile Page - ä¸ç˝çŤć´ä˝ĺ¸ĺąä¸č´ */
 .profile-page {
   display: flex;
   flex-direction: column;
@@ -674,7 +674,7 @@
   font-weight: 600;
 }
 
-/* 莽聤艣膰聙聛膰篓艦暮拧聟膹藕職盲藵偶莽聰篓膷沤啪膷沤膭莽艂钮莽钮聼膰聢聬暮聤聼/膷颅艢暮聭聤膷聣藳膹藕聢COLOR_SYSTEM 膰聽聡莽颅啪膷搂聞膷聦聝膹藕聣 */
+/* çśćć¨Şĺšďźä˝żç¨čŽžčŽĄçłťçťćĺ/č­Śĺč˛ďźCOLOR_SYSTEM ć ç­žč§čďź */
 .twin-record-banner {
   width: 100%;
   max-width: 100%;
@@ -694,7 +694,7 @@
   color: #92400e;
 }
 
-/* 暮聧膭莽聣聡膹藕職盲赂聨莽藵聭莽扭聶膰聲麓盲藵聯茅艁聨膰聽藕盲赂聙膷聡麓 */
+/* ĺĄçďźä¸ç˝çŤć´ä˝éŁć źä¸č´ */
 .twin-publish-card,
 .twin-history-card {
   width: 100%;
@@ -1032,12 +1032,12 @@
   color: var(--text-secondary);
 }
 
-/* Profile helper 茅膭木茅聺藰暮赂聝暮膮聙膹藕職盲赂聨暮艧聯茅膭木茅聺藰盲赂聙膷聡麓莽職聞暮藝艢暮聫艂暮赂聝暮膮聙 */
+/* Profile helper éĄľé˘ĺ¸ĺąďźä¸ĺşéĄľé˘ä¸č´çĺˇŚĺłĺ¸ĺą */
 .profile-helper-layout {
   width: 100%;
 }
 
-/* 暮呕拧膷呕聺茅聡聡茅聸聠膰篓膭暮藕聫膹藕職暮聠聟暮沤拧暮聦艧茅聹聙暮膭扭暮聟聟茅扭聵暮艧艢盲钮慕暮沤拧莽艧艂膷聛聤暮陇艩莽艦聴暮聫艁 */
+/* ĺŻščŻééć¨ĄĺźďźĺĺŽšĺşéĺĄŤĺéŤĺşŚäťĽĺŽšçşłčĺ¤ŠçŞĺŁ */
 .profile-helper-layout-chat {
   min-height: calc(100vh - 10rem);
 }
@@ -1060,7 +1060,7 @@
   min-height: 400px;
 }
 
-/* AgentLinkChatPage 莽颅聣暮陇聧莽聰篓 profile-helper 膰聽藝暮藕聫莽職聞茅膭木茅聺藰 */
+/* AgentLinkChatPage ç­ĺ¤ç¨ profile-helper ć ˇĺźçéĄľé˘ */
 .profile-helper-page {
   width: 100%;
 }
@@ -1242,7 +1242,7 @@
   overflow-wrap: break-word;
 }
 
-/* 膰聺聨暮聟聥莽聣拧茅聡聫膷膭篓膷膭聦膹藕職盲藵偶莽聰篓 grid 盲偶聺膷呕聛暮藝艢暮聫艂膰聽聡莽颅啪膰聹聣莽聥殴莽扭聥莽艩艧茅聴麓膹藕聦茅聛偶暮聟聧膰艧藰暮聡艧 */
+/* ćĺçšéčĄ¨čĄďźä˝żç¨ grid äżčŻĺˇŚĺłć ç­žćçŹçŤçŠşé´ďźéżĺćş˘ĺş */
 .scale-rating-row {
   margin-top: 0.9rem;
   display: grid;
@@ -1273,7 +1273,7 @@
   justify-self: center;
 }
 
-/* 莽艦聞暮膮聫膰聴艣茅聡聫膷膭篓膷膭聦膰聰拧盲赂艧盲赂聤盲赂聥暮赂聝暮膮聙膹藕聦茅聛偶暮聟聧膰聽聡莽颅啪盲赂聨膰聦聣茅聮沤膰聦陇暮聹篓盲赂聙膷木藝 */
+/* çŞĺąćśéčĄ¨čĄćšä¸şä¸ä¸ĺ¸ĺąďźéżĺć ç­žä¸ćéŽć¤ĺ¨ä¸čľˇ */
 @media (max-width: 480px) {
   .scale-rating-row {
     grid-template-columns: 1fr;
@@ -1342,9 +1342,9 @@
   line-height: 1.6;
 }
 
-/* 篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T
-   Block 膼颅艊茅脳茅藕牛艃暖臉藵艁篓艊膯脰藳脳脭 digital-twin-bootstrap艁艩
-   篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T */
+/* ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T
+   Block Đ­Ňé×éźţŃůĘ˝Ł¨ŇĆÖ˛×Ô digital-twin-bootstrapŁŠ
+   ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T */
 
 .assistant-row {
   display: flex;
@@ -1373,7 +1373,7 @@
   margin: 0 0 0.6rem;
 }
 
-/* 艃膭脭艅臍芒 */
+/* ŃĄÔńĚâ */
 .block-choice { margin-top: 0.25rem; }
 .choice-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .choice-btn {
@@ -1399,7 +1399,7 @@
 .choice-label { font-weight: 500; }
 .choice-desc { font-size: 0.78rem; opacity: 0.7; }
 
-/* 脦脛膮啪臉盲膶毛 */
+/* ÎÄąžĘäČë */
 .block-text-input { margin-top: 0.25rem; }
 .text-input-field,
 .text-input-area {
@@ -1432,7 +1432,7 @@
   font-size: 0.9rem;
 }
 
-/* 膯艛藝脰 */
+/* ĆŔˇÖ */
 .block-rating { margin-top: 0.25rem; }
 .rating-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .rating-label { font-size: 0.78rem; color: var(--text-secondary, #6b7280); white-space: nowrap; }
@@ -1449,7 +1449,7 @@
 .rating-btn.selected { background: var(--text-primary, #000); color: var(--text-inverse, #fff); border-color: var(--text-primary, #000); }
 .rating-btn.disabled { opacity: 0.5; cursor: default; }
 
-/* 脥藕膮铆 */
+/* Íźąí */
 .block-chart {
   padding: 1rem;
   background: var(--bg-secondary, #fafafa);
@@ -1466,7 +1466,7 @@
 .bar-fill { height: 100%; background: var(--text-primary, #000); transition: width 0.3s; border-radius: 2px; }
 .bar-value { width: 36px; font-size: 0.82rem; font-weight: 600; flex-shrink: 0; }
 
-/* 偶脡赂麓脰膯脛脷膶脻偶茅 */
+/* żÉ¸´ÖĆÄÚČÝżé */
 .block-copyable {
   border: 1.5px solid var(--border-default, #d1d5db);
   margin-top: 0.25rem;
@@ -1491,7 +1491,7 @@
   font-family: inherit; color: var(--text-secondary, #374151);
 }
 
-/* 麓煤脗毛偶茅赂麓脰膯掳麓墓慕 */
+/* ´úÂëżé¸´ÖĆ°´ĹĽ */
 .code-block-wrapper { position: relative; margin-bottom: 0.75rem; }
 .code-copy-btn {
   position: absolute; top: 0.4rem; right: 0.4rem;
@@ -1500,7 +1500,7 @@
   border: 1px solid rgba(255,255,255,0.3); cursor: pointer; border-radius: 3px;
 }
 
-/* 藳女脳梅掳麓墓慕 */
+/* ˛Ů×÷°´ĹĽ */
 .block-actions { margin-top: 0.25rem; }
 .actions-message { font-size: 0.9rem; margin: 0 0 0.6rem; }
 .actions-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -1511,9 +1511,9 @@
 .action-btn.secondary:hover { background: var(--bg-hover, #f3f4f6); }
 .action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* 篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T
-   偶膯艃搂藕艊膯慕墓盲艃暖臉藵艁篓艊膯脰藳脳脭 digital-twin-bootstrap艁艩
-   篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T */
+/* ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T
+   żĆŃ§źŇĆĽĹäŃůĘ˝Ł¨ŇĆÖ˛×Ô digital-twin-bootstrapŁŠ
+   ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T */
 
 .sci-section { overflow: visible; }
 .sci-top3 { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
@@ -1552,14 +1552,14 @@
 .sci-field-spinner { width: 14px; height: 14px; border: 2px solid var(--border-default, #e5e7eb); border-top-color: var(--text-primary, #000); border-radius: 50%; animation: spin-s 0.6s linear infinite; flex-shrink: 0; }
 @keyframes spin-s { to { transform: rotate(360deg); } }
 
-/* pv-section 脥篓脫膫 */
+/* pv-section Í¨ÓĂ */
 .pv-section { border: 1px solid var(--border-default, #e5e7eb); padding: 1.25rem; background: var(--bg-container, #fff); border-radius: 4px; margin-top: 1rem; }
 .pv-section-title { font-size: 1rem; font-weight: 700; margin: 0 0 1rem; }
 .pv-empty { color: var(--text-tertiary, #9ca3af); font-style: italic; font-size: 0.9rem; }
 
-/* 艩陇艩陇 臉盲膶毛偶艌膶媒臍殴艃暖臉藵 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ĘäČëżňČýĚŹŃůĘ˝ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 
-/* locked 臍殴艁艧脫膼艃膭膸卯/膯艛藝脰臉膮艁殴臉盲膶毛偶艌脟艂脡扭藳钮偶脡藵钮钮慕 */
+/* locked ĚŹŁşÓĐŃĄĎî/ĆŔˇÖĘąŁŹĘäČëżňÇłÉŤ˛ťżÉ˝ťťĽ */
 .chat-textarea--locked {
   opacity: 0.35;
   cursor: not-allowed;
@@ -1573,14 +1573,14 @@
   font-style: italic;
 }
 
-/* initial 臍殴艁艧拧臍艣篓艂艖臉藕脦脛膮啪艁殴脰钮艣脕艁殴藝藰脣脥艧贸膸疟臉搂 */
+/* initial ĚŹŁşšĚś¨łőĘźÎÄąžŁŹÖťśÁŁŹˇ˘ËÍşóĎűĘ§ */
 .chat-textarea--initial {
   color: var(--text-secondary, #6b7280);
   background: var(--bg-container, #fff);
   cursor: default;
 }
 
-/* 艃膭膸卯掳麓墓慕 + 脛脷脕艦臉盲膶毛偶艌脳茅艧膸 */
+/* ŃĄĎî°´ĹĽ + ÄÚÁŞĘäČëżň×éşĎ */
 .choice-btn-group {
   display: flex;
   align-items: center;
@@ -1588,7 +1588,7 @@
   flex-wrap: wrap;
 }
 
-/* 脛脷脕艦臉盲膶毛偶艌膶脻膯梅艁篓赂煤脭脷掳麓墓慕脫艊藳艜艁艩 */
+/* ÄÚÁŞĘäČëżňČÝĆ÷Ł¨¸úÔÚ°´ĹĽÓŇ˛ŕŁŠ */
 .choice-inline-input {
   display: flex;
   align-items: center;
@@ -1631,9 +1631,9 @@
   cursor: not-allowed;
 }
 
-/* 篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T
-   钮颅膸艅偶脡臉脫钮呕艊艂膫膰艃暖臉藵艁篓pv-*艁艩艊膯脰藳脳脭 digital-twin-bootstrap
-   篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T篓T */
+/* ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T
+   ť­ĎńżÉĘÓťŻŇłĂćŃůĘ˝Ł¨pv-*ŁŠŇĆÖ˛×Ô digital-twin-bootstrap
+   ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T */
 
 .pv-page {
   max-width: 720px;
@@ -1644,7 +1644,7 @@
   gap: 1.5rem;
 }
 
-/* 艩陇艩陇 艣慕藳偶艕艦艊艦 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ śĽ˛żŐŞŇŞ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-header {
   border: 1px solid var(--border-default, #e5e7eb);
   padding: 1.25rem;
@@ -1701,7 +1701,7 @@
   transition: width 0.4s;
 }
 
-/* 艩陇艩陇 臉媒啪脻艛麓脭麓膮臋脟艩 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ĘýžÝŔ´Ô´ąęÇŠ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .data-badge {
   padding: 0.2rem 0.5rem;
   font-size: 0.72rem;
@@ -1725,7 +1725,7 @@
   border: 1px solid var(--text-primary, #000);
 }
 
-/* 艩陇艩陇 脥篓脫膫 section 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ Í¨ÓĂ section Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-section {
   border: 1px solid var(--border-default, #e5e7eb);
   padding: 1.25rem;
@@ -1750,7 +1750,7 @@
   font-size: 0.9rem;
 }
 
-/* 艩陇艩陇 偶膯艃膼脛脺脕艢 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ żĆŃĐÄÜÁŚ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-capability-grid {
   display: flex;
   gap: 1.5rem;
@@ -1818,7 +1818,7 @@
   color: var(--text-secondary, #374151);
 }
 
-/* 艩陇艩陇 木膮脟掳膼膷脟贸 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ľąÇ°ĐčÇó Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-needs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1834,7 +1834,7 @@
 .pv-need-card ul { margin: 0; padding-left: 1.1rem; font-size: 0.85rem; line-height: 1.5; }
 .pv-need-card p { font-size: 0.85rem; margin: 0; line-height: 1.5; }
 
-/* 艩陇艩陇 膶膸脰艦藝莽赂艅 CSI 拧芒膯脳 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ČĎÖŞˇç¸ń CSI šâĆ× Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-csi-spectrum { padding: 0.5rem 0 0.25rem; }
 .pv-csi-labels {
   display: flex;
@@ -1883,7 +1883,7 @@
 }
 .pv-csi-type { font-size: 1rem; font-weight: 700; margin-top: 0.5rem; }
 
-/* 艩陇艩陇 艃搂臉艖艣呕钮煤 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ Ń§ĘőśŻťú Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-motivation-chart { display: flex; flex-direction: column; gap: 0.45rem; }
 .pv-mot-row { display: flex; align-items: center; gap: 0.5rem; }
 .pv-mot-label {
@@ -1916,7 +1916,7 @@
   color: var(--text-secondary, #374151);
 }
 
-/* 艩陇艩陇 膶脣赂艅臍艠艕梅 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ČË¸ńĚŘŐ÷ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-personality-grid {
   display: flex;
   gap: 1.5rem;
@@ -1937,7 +1937,7 @@
 .pv-per-score { font-weight: 700; font-size: 0.9rem; width: 30px; text-align: right; }
 .pv-per-level { font-size: 0.78rem; color: var(--text-secondary, #6b7280); }
 
-/* 艩陇艩陇 脳虐艧膸藵芒艣脕 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ×ŰşĎ˝âśÁ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-interp-card {
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
@@ -1951,10 +1951,10 @@
 .pv-interp-body p { margin: 0 0 0.4em; }
 .pv-interp-highlight { border-left: 3px solid var(--text-primary, #000); }
 
-/* 艩陇艩陇 脗虐臍艂藝脰脡铆 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ÂŰĚłˇÖÉí Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-forum-body { font-size: 0.9rem; line-height: 1.6; }
 
-/* 艩陇艩陇 木脳藳偶藳女脳梅艛赂 艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇艩陇 */
+/* Š¤Š¤ ľ×˛ż˛Ů×÷Ŕ¸ Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤Š¤ */
 .pv-bottom-bar {
   display: flex;
   gap: 0.75rem;
@@ -1964,7 +1964,7 @@
   border-top: 1px solid var(--border-default, #e5e7eb);
 }
 
-/* btn-secondary艁篓膶莽拧疟脡膼脦麓艣篓艊暮艁艩 */
+/* btn-secondaryŁ¨ČçšűÉĐÎ´ś¨ŇĺŁŠ */
 .btn-secondary {
   display: inline-block;
   padding: 0.5rem 1.2rem;
